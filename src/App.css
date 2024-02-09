@@ -1,0 +1,150 @@
+@media screen and (max-width: 350px){
+  .App{
+    width:100% important
+  }
+}
+@media screen and (max-hight: 310px){
+  .container{
+    height:100% important
+  }
+}
+
+.sign{
+  position: absolute;
+  top: 20%;
+  left: 35%;
+}
+
+.signin{
+  padding: 20px;
+  text-align: center;
+}
+
+.signin h2,h3{
+  font-weight: 200;
+}
+
+.signin img{
+  width: 70px;
+}
+
+
+/*-----------------------Login--------------------------- */
+
+.container{
+  border: 1px solid rgb(221, 214, 214);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 20px;
+  width: 500px;
+  background: #fff;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.container img{
+  height: 80px;
+  width: 80px;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.text{
+  color: #2f7fe7;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.underline{
+  width: 41px;
+  height: 4px;
+  background: #2f7fe7;
+  border-radius: 7px;
+}
+
+.inputs{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputs img{
+  width: 30px;
+  height: 25px;
+}
+
+.input{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 380px;
+  height: 40px;
+  background: #eaeaea;
+  border-radius: 6px;
+}
+
+.input img{
+  margin: 0px 20px;
+  width: 25px;
+  height: 25px;
+}
+
+.input input{
+  height: 30px;
+  width: 250px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #797979;
+  font-size: 13px;
+}
+
+.forgot-password{
+  margin-top: 17px;
+  color: #797979;
+  font-size: 13px;
+}
+
+.forgot-password span{
+  color: #2f7fe7;
+  cursor: pointer;
+}
+
+.forgot-password h4{
+  font-weight: 600;
+}
+
+.submit-container{
+  display: flex;
+  gap: 30px;
+  margin: 50px auto;
+}
+
+.submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 39px;
+  color: #fff;
+  background: #2f7fe7;
+  border-radius: 535px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/*-----------------------Signup----------------------- */
+
+.usega h4{
+  font-weight: 400;
+}
