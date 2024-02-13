@@ -109,13 +109,13 @@
   font-size: 13px;
 }
 
-.forgot-password{
+.signin-account{
   margin-top: 17px;
   color: #797979;
   font-size: 13px;
 }
 
-.forgot-password span{
+.signin-account span{
   color: #2f7fe7;
   cursor: pointer;
 }
@@ -147,4 +147,15 @@
 
 .usega h4{
   font-weight: 400;
+}
+
+.login-account{
+  margin-top: 17px;
+  color: #797979;
+  font-size: 13px;
+}
+
+.login-account span{
+  color: #2f7fe7;
+  cursor: pointer;
 }

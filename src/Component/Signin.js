@@ -37,9 +37,12 @@ const Signin = () => {
                         <input name='passeord' type="password" placeholder='Password' />
                     </div>
 
+
+                    <div className="login-account">Want to login with google? <br/> 
+                    <span onClick={()=>navigate('/')}> Click here for Log-In</span></div>
+
                     <div className="submit-container">
                         <Button variant='contained'>Sign Up</Button>
-                        <Button variant='contained' onClick={() => navigate('/')}>Log In</Button>
                     </div>
                 </div>
             </div>

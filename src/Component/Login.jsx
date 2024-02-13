@@ -40,42 +40,15 @@ const Login = () => {
     console.log(auth);
 
     return (
-        <>
-            <div className='container'>
-                <img src={social} alt='logo' />
-                <div className="header">
-                    <div className="text">Log-In</div>
-                    <div className="underline"></div>
-                </div>
-                <div className="inputs">
-                    <div className="input">
-                        <img src={email_icon} alt="" />
-                        <form>
-                        <input type="email"  name='email' placeholder='Email Id' />
-                        </form>
-                    </div>
-
-                    <div className="input">
-                        <img src={password_icon} alt="" />
-                        <form>
-                        <input type="password" name='password' placeholder='Password' />
-                        </form>
-                    </div>
-
-                </div>
-                <div className="forgot-password"> <span>Forget Password?</span>
-                    <h4 >Not your computer? Use Guest mode to sign in privately.</h4>
-                    <div className='signin'>
-                        <Button onClick={googleSignin} variant='contained'>Log-In With Google</Button>
-                    </div>
-                </div>
-
-                <div className="submit-container">
-                    <Button variant='contained' onClick={()=>navigate('/signin')}>Sign Up</Button>
-                    <Button variant='contained' >Log In</Button>
-                </div>
-            </div>
-        </>
+        <div style={{position:"absolute",left:"28%",padding:"110px"}}>
+        <div style={{border:"1px solid grey",padding:"20px",textAlign:"center",borderRadius:"5px",minHeight:"310px",maxWidth:"350px"}}>
+            <img style={{width:"70px"}} src={social}/>
+        <h2 style={{fontWeight:"200"}}>Log-in your google clone account</h2>
+        <h3 style={{fontWeight:"200"}}>Click the Log-in button</h3>
+        <Button onClick={googleSignin} variant='contained'>Log-in with google</Button>
+        <div className="signin-account">Don't have an account?<br/> <span onClick={()=>navigate('/signin')}> Click here for Sign-In</span></div>
+        </div>
+    </div>
     )
 }
 
