@@ -13,9 +13,9 @@ const style = {
   left: '92%',
   transform: 'translate(-50%, -50%)',
   width: "18vw",
-  height: '50vh', 
-  overflowY: 'auto', 
-  minHeight:"650px",
+  height: '50vh',
+  overflowY: 'auto',
+  minHeight: "650px",
   bgcolor: 'background.paper',
   padding: "2vw",
 };
@@ -25,43 +25,45 @@ export default function Contacts() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [name,setName] = React.useState("")
-  const [mobile,setMobile] = React.useState('')
-  const [contactsData,setContactsData] = React.useState([])
+  const [name, setName] = React.useState("")
+  const [mobile, setMobile] = React.useState('')
+  const [contactsData, setContactsData] = React.useState([])
 
-  const addContacts = async()=>{
+  const addContacts = async () => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`)
     const messageRef = collection(userDoc, "Contacts")
-    try{
-        await addDoc(messageRef,{
-           name:name,
-           mobile:mobile
-        })
-    }catch(err){
-        console.error(err)
+    try {
+      await addDoc(messageRef, {
+        name: name,
+        mobile: mobile
+       })
+       alert("Contact added successfully!");
+    } catch (err) {
+      console.error(err)
     }
   }
+  
 
 
-  const showContacts = async()=>{
+  const showContacts = async () => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`)
     const messageRef = collection(userDoc, "Contacts")
-    try{
-       const data = await getDocs(messageRef)
-       const filteredData = data.docs.map((doc)=>({
-             ...doc.data(),
-             id:doc.id
-       }))
-       setContactsData(filteredData)
-    }catch(err){
-        console.error(err)
+    try {
+      const data = await getDocs(messageRef)
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }))
+      setContactsData(filteredData)
+    } catch (err) {
+      console.error(err)
     }
   }
 
 
   return (
     <div>
-      <img onClick={handleOpen} src={user} style={{cursor:"pointer",width:"1.4vw",paddingTop:"2vw"}}/>
+      <img onClick={handleOpen} src={user} style={{ cursor: "pointer", width: "1.4vw", paddingTop: "2vw" }} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -69,17 +71,17 @@ export default function Contacts() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography sx={{paddingTop:"3vw",fontSize:"1vw",color:"grey"}}>
+          <Typography sx={{ paddingTop: "3vw", fontSize: "1vw", color: "grey" }}>
             Add Contacts
           </Typography>
-          <input onChange={(e)=>setName(e.target.value)} placeholder='Names' style={{outline:"none",fontSize:"1vw",width:"11vw",height:"1.5vw"}}/>
-          <input onChange={(e)=>setMobile(e.target.value)} placeholder='Mobile No' style={{outline:"none",fontSize:"1vw",width:"11vw",height:"1.5vw",marginTop:'1vw'}}/>
-          <Button onClick={addContacts} variant='contained' sx={{fontSize:"1vw",width:"4vw",height:"2vw",marginTop:"1vw",marginRight:'1vw'}} >Add</Button>
-          <Button onClick={showContacts} variant='contained' sx={{fontSize:"1vw",width:"4vw",height:"2vw",marginTop:"1vw"}} >Show</Button>
-          <br/>
-          {contactsData.map((data)=>{
+          <input onChange={(e) => setName(e.target.value)} placeholder='Names' style={{ outline: "none", fontSize: "1vw", width: "11vw", height: "1.5vw" }} />
+          <input onChange={(e) => setMobile(e.target.value)} placeholder='Mobile No' style={{ outline: "none", fontSize: "1vw", width: "11vw", height: "1.5vw", marginTop: '1vw' }} />
+          <Button onClick={addContacts} variant='contained' sx={{ fontSize: "1vw", width: "4vw", height: "2vw", marginTop: "1vw", marginRight: '1vw' }} >Add</Button>
+          <Button onClick={showContacts} variant='contained' sx={{ fontSize: "1vw", width: "4vw", height: "2vw", marginTop: "1vw" }} >Show</Button>
+          <br />
+          {contactsData.map((data) => {
             return <>
-             <li style={{marginTop:"0.5vw",fontSize:"1vw"}}>{data.name}<span>-{data.mobile}</span></li>
+              <li style={{ marginTop: "0.5vw", fontSize: "1vw" }}>{data.name}<span>-{data.mobile}</span></li>
             </>
           })}
         </Box>

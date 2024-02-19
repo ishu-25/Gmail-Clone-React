@@ -47,6 +47,7 @@ export default function Keep(props) {
             localStorage.setItem('Notes', JSON.stringify(updatedNotes));
             return updatedNotes;
         })
+        alert("keep added successfully!");
     }
 
     function deleteNotes(id) {

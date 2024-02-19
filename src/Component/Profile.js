@@ -16,9 +16,7 @@ const style = {
   width:'30vw',
   height:'23vw',
   bgcolor: '#D8E4F0',
-  boxShadow: 24,  
   borderRadius: '4vw',
-  p: 4,
   padding:'2vw'
 };
 
@@ -34,7 +32,7 @@ const logoutAccount =async()=>{
     console.error()
   }
 }
-console.log(auth)
+
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -42,7 +40,7 @@ console.log(auth)
 
   return (
     <div>
-      <Avatar onClick={handleOpen} sx={{ marginLeft:'13.3vw', width:'2.7vw', height:'2.7vw' ,cursor:'pointer'}} src={auth.currentUser?.photoURL} />
+      <Avatar onClick={handleOpen} sx={{top:"2.5%", position:"fixed",left:'96%' ,width:'2.7vw', height:'2.7vw' ,cursor:'pointer'}} src={auth.currentUser?.photoURL} />
       <Modal
         open={open}
         onClose={handleClose}

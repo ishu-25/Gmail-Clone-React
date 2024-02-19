@@ -41,10 +41,10 @@ const Login = () => {
 
     return (
         <div style={{position:"absolute",left:"28%",padding:"110px"}}>
-        <div style={{border:"1px solid grey",padding:"20px",textAlign:"center",borderRadius:"5px",minHeight:"310px",maxWidth:"350px"}}>
+        <div style={{border:"1px solid grey",padding:"20px",textAlign:"center",borderRadius:"5px",minHeight:"330px",maxWidth:"400px"}}>
             <img style={{width:"70px"}} src={social}/>
-        <h2 style={{fontWeight:"200"}}>Log-in your google clone account</h2>
-        <h3 style={{fontWeight:"200"}}>Click the Log-in button</h3>
+        <h2 style={{fontWeight:"200",paddingBottom:'20px'}}>Log-in your google clone account</h2>
+        <h3 style={{fontWeight:"200",paddingBottom:'10px'}}>Click the Log-in button</h3>
         <Button onClick={googleSignin} variant='contained'>Log-in with google</Button>
         <div className="signin-account">Don't have an account?<br/> <span onClick={()=>navigate('/signin')}> Click here for Sign-In</span></div>
         </div>

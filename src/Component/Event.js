@@ -37,6 +37,7 @@ export default function Event() {
             event:event,
             date:date
         })
+        alert("Event added successfully!");
     }catch(err){
         console.error(err)
     }

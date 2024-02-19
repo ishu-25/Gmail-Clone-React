@@ -11,14 +11,17 @@ function Mainfile() {
   const [subCollect,setSubCollect] = useState('')
   const [search,setSearch] = useState('')
 
+  const[isOpen,setIsOpen] =useState(false)
+    const toggleLeftPanel=()=> setIsOpen(!isOpen)
+
   return (
     <div>
       <Grid container>
         <Grid item xs={12}>
-          <Navbar setSearch={setSearch}/>
+          <Navbar setSearch={setSearch} toggleLeftPanel={toggleLeftPanel}/>
         </Grid>
         <Grid item xs={2}>
-          <Leftpanel setSubCollect={setSubCollect}/>
+          <Leftpanel setSubCollect={setSubCollect} isOpen={isOpen}/>
         </Grid>
         <Grid item xs={9}>
           <Middle search={search} subCollect={subCollect}/>

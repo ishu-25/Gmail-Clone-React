@@ -35,6 +35,7 @@ export default function Tasks() {
         await addDoc(messageRef,{
            task:task
         })
+        alert("Task added successfully!");
     }catch(err){
         console.error(err)
     }
