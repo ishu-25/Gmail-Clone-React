@@ -62,8 +62,6 @@ export default function Message(props) {
 
     return (
         <div>
-            {/* {props.showFullPanel ? (
-                <> */}
                     <div onClick={handleOpen} style={{cursor:'pointer',height: '4vw', marginLeft: '1vw', width: '12vw', display: 'flex', alignItems: 'center', borderRadius: '20px', backgroundColor: '#BEE0FF' }}>
                         <img src={pen} style={{ width: '1.2vw', marginLeft: '2vw' }} />
                         <h4 style={{ marginLeft: '1.6vw', fontWeight: '400', fontSize: '1.2vw', fontFamily: "Google Sans" }}>Compose</h4>

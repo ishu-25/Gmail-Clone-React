@@ -39,8 +39,8 @@ const logoutAccount =async()=>{
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <Avatar onClick={handleOpen} sx={{top:"2.5%", position:"fixed",left:'96%' ,width:'2.7vw', height:'2.7vw' ,cursor:'pointer'}} src={auth.currentUser?.photoURL} />
+    <div style={{marginTop:'1vw',top:"2.5%"}}>
+      <Avatar onClick={handleOpen} sx={{ position:"fixed",left:'96%' ,width:'2.7vw', height:'2.7vw' ,cursor:'pointer'}} src={auth.currentUser?.photoURL} />
       <Modal
         open={open}
         onClose={handleClose}

@@ -70,7 +70,7 @@ export default function Tasks() {
           <Typography sx={{paddingTop:'3vw',fontSize:'1vw',color:'grey'}}>
             Add Tasks
           </Typography>
-          <input onChange={(e)=>setTask(e.target.value)} placeholder='Notes' style={{outline:"none",fontSize:"1vw",width:"11vw",height:"1.5vw"}}/>
+          <input onChange={(e)=>setTask(e.target.value)} placeholder='Notes' style={{marginTop:'1vw',outline:"none",fontSize:"1vw",width:"11vw",height:"1.5vw"}}/>
           <Button onClick={addTasks} variant='contained' sx={{fontSize:"1vw",width:"4vw",height:"2vw",marginTop:"1vw",marginRight:"1vw"}} >Add</Button>
           <Button onClick={showTasks} variant='contained' sx={{fontSize:"1vw",width:"4vw",height:"2vw",marginTop:"1vw"}} >Show</Button>
           <br/>

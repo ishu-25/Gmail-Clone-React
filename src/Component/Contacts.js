@@ -74,7 +74,7 @@ export default function Contacts() {
           <Typography sx={{ paddingTop: "3vw", fontSize: "1vw", color: "grey" }}>
             Add Contacts
           </Typography>
-          <input onChange={(e) => setName(e.target.value)} placeholder='Names' style={{ outline: "none", fontSize: "1vw", width: "11vw", height: "1.5vw" }} />
+          <input onChange={(e) => setName(e.target.value)} placeholder='Names' style={{marginTop:'1vw', outline: "none", fontSize: "1vw", width: "11vw", height: "1.5vw" }} />
           <input onChange={(e) => setMobile(e.target.value)} placeholder='Mobile No' style={{ outline: "none", fontSize: "1vw", width: "11vw", height: "1.5vw", marginTop: '1vw' }} />
           <Button onClick={addContacts} variant='contained' sx={{ fontSize: "1vw", width: "4vw", height: "2vw", marginTop: "1vw", marginRight: '1vw' }} >Add</Button>
           <Button onClick={showContacts} variant='contained' sx={{ fontSize: "1vw", width: "4vw", height: "2vw", marginTop: "1vw" }} >Show</Button>
