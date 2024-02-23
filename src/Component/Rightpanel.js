@@ -8,7 +8,8 @@ import Profile from './Profile';
 
 function Rightpanel() {
   return (
-    <div style={{ top: '0', backgroundColor: '#F9F9F9', minHeight: '100vh', textAlign: 'center', position: 'fixed', right: '0', width: '5vw' }}>
+    <div 
+      style={{ top: '0', backgroundColor: '#F9F9F9', minHeight: '100vh', textAlign: 'center', position: 'fixed', right: '0', width: '5vw' }}>
       <Profile />
       <Event />
       <Keep />

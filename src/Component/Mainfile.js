@@ -1,32 +1,30 @@
-import { Grid } from '@mui/material'
 import React, { useState } from 'react'
 import Leftpanel from './Leftpanel'
 import Middle from './Middle'
 import Rightpanel from './Rightpanel'
 import Footer from './Footer'
+import Openmail from './Openmail'
 
 function Mainfile() {
 
   const [subCollect,setSubCollect] = useState('')
   const [search,setSearch] = useState('')
 
+  const [isOpen, setIsOpen] = useState(true)
+  const toggleSideBar = () => setIsOpen(!isOpen)
+
 
   return (
     <div>
-      <Grid container>
-        <Grid item xs={2}>
-          <Leftpanel setSubCollect={setSubCollect} />
-        </Grid>
-        <Grid item xs={9}>
-          <Middle search={search} subCollect={subCollect} setSearch={setSearch}/>
-        </Grid>
-        <Grid item xs={1}>
+     
+          <Leftpanel setSubCollect={setSubCollect} isOpen={isOpen} toggleSideBar={toggleSideBar} />
+       
+          <Middle search={search} subCollect={subCollect} setSearch={setSearch} isOpen={isOpen} />
+          {/* <Openmail search={search} subCollect={subCollect} setSearch={setSearch} /> */}
+       
           <Rightpanel />
-        </Grid>
-        <Grid item xs={12}>
+       
           <Footer />
-        </Grid>
-      </Grid>
     </div>
   )
 }
