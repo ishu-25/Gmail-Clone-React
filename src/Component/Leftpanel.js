@@ -17,9 +17,8 @@ function Leftpanel(props) {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [hovered, setHovered] = useState(null);
+    
 
-//     const [isOpen, setIsOpen] = useState(false)
-//   const toggleSideBar = () => setIsOpen(!isOpen)
    
 
     const handleItemClick = (index, collect) => {
@@ -28,13 +27,18 @@ function Leftpanel(props) {
     };
 
     const handleMouseEnter = (index) => setHovered(index);
+    
         
     const handleMouseLeave = () =>setHovered(null);
 
 
-
     return (
-        <div style={{ top: '0', position: 'fixed', backgroundColor: '#F9F9F9', minHeight: '100vh', width: props.isOpen ? '19.6vw' : '5.7vw' }}>
+        <>
+
+ 
+        <div style={{ top: '0', position: 'fixed', backgroundColor: '#F9F9F9', minHeight: '100vh', width: props.isOpen ? '19.6vw':'5.7vw'}}
+        onMouseEnter={handleMouseEnter} 
+                onMouseLeave={handleMouseLeave}>
             
             <div style={{ height: '5vw', width: '19.6vw',backgroundColor:'#F9F9F9' }}>
                 
@@ -88,7 +92,7 @@ function Leftpanel(props) {
                     marginLeft: '1.6vw', 
                     fontWeight: '400', 
                     fontSize: '1.1vw', 
-                    fontFamily: "Google Sans" }}>
+                    fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif"}}>
                     Inbox
                 </span>)}
             </div>
@@ -116,7 +120,7 @@ function Leftpanel(props) {
                     marginLeft: '1.6vw', 
                     fontWeight: '400', 
                     fontSize: '1.1vw', 
-                    fontFamily: "Google Sans" }}>
+                    fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }}>
                     Starred
                     </span>)}
             </div>
@@ -144,7 +148,7 @@ function Leftpanel(props) {
                     marginLeft: '1.6vw', 
                     fontWeight: '400', 
                     fontSize: '1.1vw', 
-                    fontFamily: "Google Sans" }}>
+                    fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }}>
                     Snoozed
                 </span>)}
             </div>
@@ -172,11 +176,12 @@ function Leftpanel(props) {
                     marginLeft: '1.6vw', 
                     fontWeight: '400', 
                     fontSize: '1.1vw', 
-                    fontFamily: "Google Sans" }}>
+                    fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }}>
                     Sent
                 </span>)}
             </div>
         </div>
+        </>
     )
 }
 

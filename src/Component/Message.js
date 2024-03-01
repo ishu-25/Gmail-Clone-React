@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import pen from '../images/pen.png'
 import { TextField } from '@mui/material';
-import { addDoc, collection, doc, getDocs } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, serverTimestamp } from 'firebase/firestore';
 import { auth, database } from '../firebase/setup';
 
 const style = {
@@ -39,7 +39,8 @@ export default function Message(props) {
         try {
             await addDoc(messageRef, {
                 email: message,
-                sender: auth.currentUser?.displayName
+                sender: auth.currentUser?.displayName,
+                createdAt:serverTimestamp()
             })
         } catch (err) {
             console.error(err)
@@ -54,7 +55,8 @@ export default function Message(props) {
         try {
             await addDoc(messageRef, {
                 email: message,
-                sender: auth.currentUser?.displayName
+                sender: auth.currentUser?.displayName,
+                createdAt:serverTimestamp()
             })
             send()
         } catch (err) {
@@ -67,9 +69,9 @@ export default function Message(props) {
 
         <div>
 
-            <div onClick={handleOpen} style={{width:'15vw',cursor: 'pointer', height: '4vw', marginLeft: '1vw', display: 'flex', alignItems: 'center', borderRadius: '20px', backgroundColor: '#BEE0FF' }}>
+            <div onClick={handleOpen} style={{width:props.isOpen ?'14.7vw': '4.7vw',cursor: 'pointer', height: '4vw', marginLeft: '1vw', display: 'flex', alignItems: 'center', borderRadius: '20px', backgroundColor: '#BEE0FF' }}>
                 <img src={pen} style={{ width: '1.2vw', marginLeft: '2vw' }} />
-                {props.isOpen && (<span style={{ marginLeft: '1.6vw', fontWeight: '400', fontSize: '1.2vw', fontFamily: "Google Sans"}}>Compose</span>)}
+                {props.isOpen && (<span style={{ marginLeft: '1.6vw', fontWeight: '400', fontSize: '1.2vw', fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif"}}>Compose</span>)}
             </div>
 
             <Modal

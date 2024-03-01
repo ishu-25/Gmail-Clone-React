@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material'
-import email_icon from '../images/email.png'
-import password_icon from '../images/password.png'
 import social from '../images/social.png'
 import {signInWithPopup} from 'firebase/auth';
 import {auth, database, googleProvider} from '../firebase/setup';

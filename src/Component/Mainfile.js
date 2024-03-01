@@ -20,7 +20,7 @@ function Mainfile() {
           <Leftpanel setSubCollect={setSubCollect} isOpen={isOpen} toggleSideBar={toggleSideBar} />
        
           <Middle search={search} subCollect={subCollect} setSearch={setSearch} isOpen={isOpen} />
-          {/* <Openmail search={search} subCollect={subCollect} setSearch={setSearch} /> */}
+          {/* <Openmail search={search} subCollect={subCollect} setSearch={setSearch} isOpen={isOpen} /> */}
        
           <Rightpanel />
        
