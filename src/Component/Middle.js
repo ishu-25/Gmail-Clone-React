@@ -467,8 +467,7 @@ function Middle(props) {
                           <img
                             onClick={(e) => {
                               e.stopPropagation();
-                              starred(data);
-                              
+                              starredRemove(data);
                             }}
                             src={yellow}
                             style={{
@@ -482,7 +481,7 @@ function Middle(props) {
                         <img
                           onClick={(e) => {
                             e.stopPropagation();
-                            starredRemove(data);
+                            starred(data);
                           }}
                           src={star}
                           style={{
