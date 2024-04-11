@@ -13,8 +13,8 @@ function Rightpanel() {
       <Profile />
       <Event />
       <Keep />
-      <Contacts />
       <Tasks />
+      <Contacts />
     </div>
   )
 }

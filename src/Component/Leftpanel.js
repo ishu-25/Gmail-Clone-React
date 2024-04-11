@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import gmail from "../images/gmail.png"
 import menu from "../images/menu.png"
-import Middle from './Middle'
+import bin from "../images/bin.png"
 
 
 
@@ -63,8 +63,6 @@ function Leftpanel(props) {
 
             
             <Message isOpen={props.isOpen}/>
-            
-            
             
             
             
@@ -178,6 +176,35 @@ function Leftpanel(props) {
                     fontSize: '1.1vw', 
                     fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }}>
                     Sent
+                </span>)}
+            </div>
+
+
+            <div 
+                onClick={() => handleItemClick(4, 'Trash')}
+                onMouseEnter={() => handleMouseEnter(4)}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    backgroundColor: activeIndex === 4 ? '#BEE0FF' : hovered === 4 ? '#D3D3D3' : '#F9F9F9',
+                    marginTop: '0.5vw', 
+                    marginLeft: '0.8vw', 
+                    width: props.isOpen ? '15vw' : '5vw', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    cursor: 'pointer', 
+                    padding: '0.4vw', 
+                    borderRadius: '20px'}}>
+                
+                <img src={bin} style={{ width: '1.2vw', marginLeft: '2vw' }} />
+                
+                {props.isOpen && (
+                <span style={{ 
+                    cursor: 'pointer', 
+                    marginLeft: '1.6vw', 
+                    fontWeight: '400', 
+                    fontSize: '1.1vw', 
+                    fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }}>
+                    Trash
                 </span>)}
             </div>
         </div>

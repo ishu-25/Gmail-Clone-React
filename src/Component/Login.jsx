@@ -29,6 +29,7 @@ const Login = () => {
         try {
             await signInWithPopup(auth,googleProvider)
             addUser()
+            
             navigate('/main')
         } catch (error) {
             console.log(error)
@@ -53,3 +54,6 @@ const Login = () => {
 
 
 export default Login;
+
+
+

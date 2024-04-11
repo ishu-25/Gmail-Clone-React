@@ -40,7 +40,7 @@ const logoutAccount =async()=>{
 
   return (
     <div style={{marginTop:'1vw',top:"2.5%"}}>
-      <Avatar onClick={handleOpen} sx={{ position:"fixed",left:'96%' ,width:'2.7vw', height:'2.7vw' ,cursor:'pointer'}} src={auth.currentUser?.photoURL} />
+      <Avatar onClick={handleOpen} style={{position:"fixed",left:'96%' ,width:'2.7vw', height:'2.7vw' ,cursor:'pointer'}} src={auth.currentUser?.photoURL} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -52,7 +52,7 @@ const logoutAccount =async()=>{
             {auth.currentUser?.email}
           </Typography>
           <Avatar src={auth.currentUser?.photoURL} style={{marginLeft:'10.5vw',width:'6vw',height:'6vw'}}/>
-          <Typography sx={{textAlign:'center', fontSize:'1.5vw'}}>
+          <Typography style={{textAlign:'center', fontSize:'1.3vw',marginTop:'0.8vw'}}>
             Hey, {auth.currentUser?.displayName}
           </Typography>
           <button onClick={logoutAccount} style={{cursor:'pointer',fontSize:'1vw' ,border:'1px solid white',marginLeft:'7.5vw',marginTop:'2vw',borderRadius:'2vw',width:'12vw',height:'4vw'}}>

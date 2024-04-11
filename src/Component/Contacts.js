@@ -7,6 +7,7 @@ import user from "../images/user.png"
 import { addDoc, collection, doc, getDocs } from 'firebase/firestore';
 import { auth, database } from '../firebase/setup';
 
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -38,6 +39,7 @@ export default function Contacts() {
         mobile: mobile
        })
        alert("Contact added successfully!");
+      
     } catch (err) {
       console.error(err)
     }
