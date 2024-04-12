@@ -430,7 +430,7 @@ function Middle(props) {
                         {hoveredEmailId !== data.id && (
                           <div
                             style={{
-                              marginLeft: props.isOpen ? "4vw" : "19vw",
+                              marginLeft: props.isOpen ? "3.1vw" : "17vw",
                               fontSize: "1vw",
                               fontWeight: "500",
                             }}
@@ -556,7 +556,7 @@ function Middle(props) {
                       {hoveredEmailId !== data.id && (
                         <div
                           style={{
-                            marginLeft: props.isOpen ? "4vw" : "2.9vw",
+                            marginLeft: props.isOpen ? "2.8vw" : "1.7vw",
                             fontSize: "1vw",
                             fontWeight: "500",
                           }}
