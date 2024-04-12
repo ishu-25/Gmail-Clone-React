@@ -82,7 +82,7 @@ function Leftpanel(props) {
                     padding: '0.4vw', 
                     borderRadius: '20px'}}>
 
-                <img src={inbox} style={{ width: '1.2vw', marginLeft: '2vw' }} />
+                <img src={inbox} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
 
                 {props.isOpen && (
                 <span style={{ 
@@ -110,7 +110,7 @@ function Leftpanel(props) {
                     padding: '0.4vw', 
                     borderRadius: '20px'}}>
                 
-                <img src={star} style={{ width: '1.2vw', marginLeft: '2vw' }} />
+                <img src={star} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
                 {props.isOpen && (
                 <span style={{ 
@@ -138,7 +138,7 @@ function Leftpanel(props) {
                     padding: '0.4vw', 
                     borderRadius: '20px'}}>
                 
-                <img src={snooze} style={{ width: '1.2vw', marginLeft: '2vw' }} />
+                <img src={snooze} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
                 {props.isOpen && (
                 <span style={{ 
@@ -166,7 +166,7 @@ function Leftpanel(props) {
                     padding: '0.4vw', 
                     borderRadius: '20px'}}>
                 
-                <img src={send} style={{ width: '1.2vw', marginLeft: '2vw' }} />
+                <img src={send} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
                 {props.isOpen && (
                 <span style={{ 
@@ -195,7 +195,7 @@ function Leftpanel(props) {
                     padding: '0.4vw', 
                     borderRadius: '20px'}}>
                 
-                <img src={bin} style={{ width: '1.2vw', marginLeft: '2vw' }} />
+                <img src={bin} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
                 {props.isOpen && (
                 <span style={{ 
