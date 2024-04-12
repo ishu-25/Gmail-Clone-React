@@ -174,8 +174,7 @@ function Middle(props) {
           top: "0",
           width: "75.5vw",
           height: "5vw",
-        }}
-      >
+        }}>
         <div
           style={{
             marginTop: "0.7vw",
@@ -218,9 +217,10 @@ function Middle(props) {
         style={{
           marginLeft: props.isOpen ? "19.6vw" : "5.7vw",
           width: props.isOpen ? "74vw" : "88vw",
-        }}
-      >
-        <div style={{ paddingBottom: "1vw", marginTop: "5vw" }}>
+        }}>
+
+        
+        <div style={{paddingBottom: "1vw", marginTop: "5vw" }}>
           <img
             src={box}
             style={{
@@ -229,8 +229,7 @@ function Middle(props) {
               height: "1.2vw",
               marginLeft: "1.5vw",
               marginTop: "2vw",
-            }}
-          />
+            }} />
 
           <img
             src={barrow}
@@ -309,6 +308,7 @@ function Middle(props) {
             }}
           />
         </div>
+      
 
         {props.search
           ? mailData
@@ -515,6 +515,7 @@ function Middle(props) {
                           textOverflow: "ellipsis",
                           width: props.isOpen ? "40vw" : "55vw",
                           fontWeight: "200",
+                          fontSize:'1.3vw'
                         }}
                       >
                         {data.email}
@@ -584,6 +585,7 @@ function Middle(props) {
         </h6>
       </div>
     </div>
+    
   );
 }
 

@@ -36,13 +36,13 @@ function Leftpanel(props) {
         <>
 
  
-        <div style={{ top: '0', position: 'fixed', backgroundColor: '#F9F9F9', minHeight: '100vh', width: props.isOpen ? '19.6vw':'5.7vw'}}
+        <div style={{zIndex:'1', top: '0', position: 'fixed', backgroundColor: '#F9F9F9', minHeight: '100vh', width: props.isOpen ? '19.6vw':'5.7vw'}}
         onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}>
             
-            <div style={{ height: '5vw', width: '19.6vw',backgroundColor:'#F9F9F9' }}>
+            <div style={{ height: '5vw', width: '20vw',backgroundColor:'#F9F9F9' }}>
                 
-                    <div style={{ paddingBottom: '1vw', paddingTop: '1vw', display: "flex", alignItems: "center" }}>
+                    <div style={{ paddingBottom: '1vw', paddingTop: '1vw',  display: "flex", alignItems: "center",flexDirection:'row'}}>
                         
                         <IconButton onClick={props.toggleSideBar}
                             color="inherit"
