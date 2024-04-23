@@ -60,7 +60,7 @@ export default function Message(props) {
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
                 subject:subject,
-                emailid:message?.mailId
+                
             });
             console.log(messageRef)
             send()
