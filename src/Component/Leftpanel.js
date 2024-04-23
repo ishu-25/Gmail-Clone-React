@@ -17,9 +17,6 @@ function Leftpanel(props) {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [hovered, setHovered] = useState(null);
-    
-
-   
 
     const handleItemClick = (index, collect) => {
         setActiveIndex(index);
@@ -80,7 +77,7 @@ function Leftpanel(props) {
                     alignItems: 'center', 
                     cursor: 'pointer', 
                     padding: '0.4vw', 
-                    borderRadius: '20px'}}>
+                    borderRadius: '30px'}}>
 
                 <img src={inbox} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
 
@@ -108,7 +105,7 @@ function Leftpanel(props) {
                     alignItems: 'center', 
                     cursor: 'pointer', 
                     padding: '0.4vw', 
-                    borderRadius: '20px'}}>
+                    borderRadius: '30px'}}>
                 
                 <img src={star} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
@@ -136,7 +133,7 @@ function Leftpanel(props) {
                     alignItems: 'center', 
                     cursor: 'pointer', 
                     padding: '0.4vw', 
-                    borderRadius: '20px'}}>
+                    borderRadius: '30px'}}>
                 
                 <img src={snooze} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
@@ -164,7 +161,7 @@ function Leftpanel(props) {
                     alignItems: 'center', 
                     cursor: 'pointer', 
                     padding: '0.4vw', 
-                    borderRadius: '20px'}}>
+                    borderRadius: '30px'}}>
                 
                 <img src={send} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 
@@ -193,7 +190,7 @@ function Leftpanel(props) {
                     alignItems: 'center', 
                     cursor: 'pointer', 
                     padding: '0.4vw', 
-                    borderRadius: '20px'}}>
+                    borderRadius: '30px'}}>
                 
                 <img src={bin} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 

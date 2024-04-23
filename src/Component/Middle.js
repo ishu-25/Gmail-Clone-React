@@ -23,7 +23,8 @@ import barrow from "../images/bottom arrow.png";
 import key from "../images/keyboard.png";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
+
+
 
 function Middle(props) {
   const [mailData, setMailData] = useState([]);
@@ -51,6 +52,7 @@ function Middle(props) {
       console.error(err);
     }
   };
+
 
   const getMail = async () => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);

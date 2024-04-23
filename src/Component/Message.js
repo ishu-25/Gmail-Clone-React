@@ -59,7 +59,8 @@ export default function Message(props) {
                 email: message,
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
-                subject:subject
+                subject:subject,
+                id:message?.id
             });
             console.log(messageRef)
             send()
@@ -67,7 +68,6 @@ export default function Message(props) {
             console.error(err)
         }
     }
-    
 
 
     return (

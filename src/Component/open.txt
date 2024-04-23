@@ -1,0 +1,65 @@
+ // const [mailData, setMailData] = useState(null);
+  
+  
+  const [emailData, setEmailData] = useState(null);
+
+const subject = async(data)=>{
+    const userDoc = doc(database,'Users',`${auth.currentUser?.email}`)
+    const subjectDoc= doc(userDoc,'subject'`${data.Subject}`)
+    try {
+      await setDoc(subjectDoc,{
+        subject:Subject,
+
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+   useEffect(() => {
+    const fetchEmailData = async () => {
+      try {
+        const emailDocRef = doc(database, "emailData", id);
+        const emailExists = await getDoc(emailDocRef);
+
+        if (emailExists.exists()) {
+          const emailData = emailExists.data();
+          setEmailData(emailData);
+        } else {
+          console.log("Email document not found");
+        }
+      } catch (error) {
+        console.error("Error fetching email data:", error);
+      }
+     
+    };
+
+
+    fetchEmailData();
+  }, [id]);
+
+   
+
+    const opmail = async (data) => {
+    const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
+    const messageDoc = doc(userDoc, `${props.subCollect ? props.subCollect : "Inbox"}`, `${data.id}`);
+    try {
+      const docSnap = await getDoc(messageDoc);
+      if (docSnap.exists()) {
+        const mailData = { id: docSnap.id, ...docSnap.data()};
+        if (selectedMail && selectedMail.id === mailData.id) {
+          return mailData; // Return the data without updating
+      } else {
+          // Update the state with the selected mail details
+          setSelectedMail(mailData);
+      }
+      //   // Update the state with the selected mail details
+      //   setSelectedMail(mailData);
+      } else {
+        console.log("No such document!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
