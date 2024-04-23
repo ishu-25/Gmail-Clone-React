@@ -204,7 +204,7 @@ useEffect(() => {
 
         <div style={{fontSize:'1vw'}}>
         
-               {/* {id} */}
+               {id}
             {/* {mailData && mailData.subject} */}
             <img src={printer} style={{ cursor:'pointer', width: "1.3vw",height: "1.3vw", marginTop: "1vw",marginLeft: props.isOpen ? "55vw" : "68.5vw"}}/>
             <img src={launch}  style={{cursor:'pointer', width: "1.3vw", height: "1.3vw",marginTop: "1vw",marginLeft: "1vw",}}/>

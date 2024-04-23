@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -26,9 +26,9 @@ export default function Message(props) {
     const handleClose = () => setOpen(false);
 
 
-    const [mailId, setMailId] = React.useState('')
-    const [message, setMessage] = React.useState('')
-    const [subject, setSubject] = React.useState('')
+    const [mailId, setMailId] = useState('')
+    const [message, setMessage] = useState('')
+    const [subject, setSubject] = useState('')
 
 
 
@@ -42,7 +42,7 @@ export default function Message(props) {
                 email: message,
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
-                subject:subject
+                subject:subject,
             })
         } catch (err) {
             console.error(err)
@@ -60,7 +60,7 @@ export default function Message(props) {
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
                 subject:subject,
-                id:message?.id
+                emailid:message?.mailId
             });
             console.log(messageRef)
             send()
