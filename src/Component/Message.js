@@ -60,7 +60,6 @@ export default function Message(props) {
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
                 subject:subject,
-                
             });
             console.log(messageRef)
             send()
