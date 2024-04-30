@@ -8,7 +8,9 @@ import {
   doc,
   setDoc,
   getDoc,
+  startAfter,
 } from "firebase/firestore";
+import { Avatar } from '@mui/material';
 import { auth, database } from "../firebase/setup";
 import printer from "../images/printer.png";
 import launch from "../images/launch.png";
@@ -25,28 +27,15 @@ import larrow from "../images/left arrow.png";
 import rarrow from "../images/right arrow.png";
 import barrow from "../images/bottom arrow.png";
 import key from "../images/keyboard.png";
+import reply from "../images/reply.png";
+import forward from "../images/Forward.png";
+import smile from "../images/smile.png";
 
 
 function Openmail(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [selectedMail, setSelectedMail] = useState(null);
-  // const [emailData, setEmailData] = useState(null);
-
-
-
-// const emailOpen = ref(getDatabase())
-// // const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
-// //     const messageDoc = doc(userDoc, `${props.subCollect ? props.subCollect : "Inbox"}`, `${data.id}`);
-// get(child(emailOpen,`Users/${id}`)).then((docSnap)=>{
-//   if(docSnap.exists()){
-//     console.log(docSnap.val())
-//   }else{
-//     console.log('No Data Available')
-//   }
-// }).catch((err)=>{
-//   console.error(err)
-// })
+  const [mailData, setMailData] = useState(null);
 
 
 
@@ -58,56 +47,104 @@ function Openmail(props) {
 
   const mailOpen = async ()=>{
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
-    console.log('userDoc',userDoc)
-    const messageDoc = doc(userDoc, "Inbox", `${auth.currentUser?.id}`);
-    console.log('messageDoc',messageDoc)
-    try {
-      const docSnap = await getDoc(messageDoc);
-      if (docSnap.exists()) {
-        const mailData = { id: docSnap.id, ...docSnap.data()};
-        if (selectedMail && selectedMail.id === mailData.id) {
-          return mailData;
-      } else {
-          setSelectedMail(mailData);
-      }
-      } else {
-        console.log("No Data Available !!!!");
-      }
-    }catch(err){
-      console.error(err)
-    }
-  }
-  
+    const inboxDoc = doc(userDoc, "Inbox", `${id}`);
+    const starredDoc = doc(userDoc, "Starred", `${id}`);
+    const snoozedDoc = doc(userDoc, "Snoozed", `${id}`);
+    const sendDoc = doc(userDoc, "send", `${id}`);
+    const trashDoc = doc(userDoc, "Trash", `${id}`);
+  //   try {
 
+  //     let docSnap
+  //     let mailData
+      
+  //     docSnap = await getDoc(inboxDoc);
+      
+  //   if (docSnap.exists()) {
+  //     mailData = { id: docSnap.id, ...docSnap.data() };
+  //   }
+
+  //   if(!mailData){
+  //     docSnap = await getDoc(starredDoc);
+  //     if (docSnap.exists()) {
+  //       mailData = { id: docSnap.id, ...docSnap.data() };
+  //     }
+  //   }
+
+  //   if(!mailData){
+  //     docSnap = await getDoc(snoozedDoc);
+  //     if (docSnap.exists()) {
+  //       mailData = { id: docSnap.id, ...docSnap.data() };
+  //     }
+  //   }
+
+  //   if(!mailData){
+  //     docSnap = await getDoc(sendDoc);
+  //     if (docSnap.exists()) {
+  //       mailData = { id: docSnap.id, ...docSnap.data() };
+  //     }
+  //   }
+
+  //   if(!mailData){
+  //     docSnap = await getDoc(trashDoc);
+  //     if (docSnap.exists()) {
+  //       mailData = { id: docSnap.id, ...docSnap.data() };
+  //     }
+  //   }
+
+  //   if(mailData){
+  //     setMailData(mailData)
+  //     console.log("Mail data:", mailData);
+  //   } else {
+  //     console.log("No data available for this ID.");
+  //   }
+  //   }catch(err){
+  //     console.error(err)
+  //   }
+  // }
+  
+  try {
+    let docSnap;
+    let mailData;
+
+    const getMailData = async (doc) => {
+        docSnap = await getDoc(doc);
+        if (docSnap.exists()) {
+            mailData = { id: docSnap.id, ...docSnap.data() };
+            return true;
+        }
+        return false;
+    };
+
+    switch (true) {
+        case await getMailData(inboxDoc):
+            break;
+        case await getMailData(starredDoc):
+            break;
+        case await getMailData(snoozedDoc):
+            break;
+        case await getMailData(sendDoc):
+            break;
+        case await getMailData(trashDoc):
+            break;
+        default:
+            break;
+    }
+
+    if (mailData) {
+        setMailData(mailData);
+        // console.log("Mail data:", mailData);
+    } else {
+        console.log("No data available for this ID.");
+    }
+} catch (err) {
+    console.error(err);
+}
+};
 
 useEffect(() => {
   mailOpen()
-  // const q = query(collection(db, "buddies"))
-  // const unsub = onSnapshot(q, (querySnapshot) => {
-  //   console.log("Data", querySnapshot.docs.map(d => doc.data()));
-  // });
 }, [])
 
-// useEffect(() => {
-//   const fetchEmailData = async () => {
-//     try {
-//       const emailDocRef = doc(database, "emailData", id);
-//       const emailExists = await getDoc(emailDocRef);
-
-//       if (emailExists.exists()) {
-//         const emailData = emailExists.data();
-//         setEmailData(emailData);
-//       } else {
-//         console.log("Email document not found");
-//       }
-//     } catch (error) {
-//       console.error("Error fetching email data:", error);
-//     }
-   
-//   };
-
-//   fetchEmailData();
-// }, [id]);
 
   return (
     <div style={{ marginLeft: "19.6vw", width: "74vw" }}>
@@ -204,13 +241,63 @@ useEffect(() => {
 
         <div style={{fontSize:'1vw'}}>
         
-               {id}
-            {/* {mailData && mailData.subject} */}
-            <img src={printer} style={{ cursor:'pointer', width: "1.3vw",height: "1.3vw", marginTop: "1vw",marginLeft: props.isOpen ? "55vw" : "68.5vw"}}/>
-            <img src={launch}  style={{cursor:'pointer', width: "1.3vw", height: "1.3vw",marginTop: "1vw",marginLeft: "1vw",}}/>
+               
+        {mailData ? (
+        <div>
+          <div style={{display:'flex',flexDirection:'row'}}>
+            
+            <div style={{width:props.isOpen?'100vw':'112vw',fontSize:'2vw',marginLeft:'3.5vw',paddingBottom:'1.5vw',marginTop:'1vw',whiteSpace: "nowrap",overflow: "hidden",textOverflow: "ellipsis"}}>
+            {mailData.subject} 
+            </div>
+            
+            <div style={{marginLeft: props.isOpen ? "1vw" : "1vw",marginTop:'1vw',width:'10vw'}}>
+            <img src={printer} style={{ cursor:'pointer', width: "1.5vw",height: "1.3vw"}}/>
+            <img src={launch}  style={{cursor:'pointer', width: "2.3vw", height: "1.3vw",marginLeft: "1vw",paddingRight:'1vw'}}/>
+            </div>
+            
+          </div>
 
+          
+          
+          <div  style={{marginRight:'4vw',display:'flex',flexDirection:'row'}}>
+          <Avatar src={mailData.senderPhoto} />
+          
+          <div style={{marginLeft:'0.5vw',fontSize:'1.1vw',fontWeight:'600',display:'flex',flexDirection:'row'}}> 
+            {mailData.sender}
+          
+            <h5 style={{marginLeft:'0.3vw',fontWeight:'200',fontSize:'1vw',color:'gray'}}>
+            {'<'+ mailData.senderEmailId +'>'} 
+            </h5>
+            
+          </div>
+          
+          </div>
+
+
+          <div style={{marginLeft:'3.5vw',marginRight:'4vw'}}>
+          <p style={{content:'center'}} >{mailData.email}</p>
+          </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+            
         </div>
       </div>
+      
+      <div style={{marginLeft: props.isOpen ? "4.5vw" : "-9vw"}}>
+
+        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'3vw',marginTop:'2vw',borderRadius:'1.5vw',paddingRight:'1vw'}}>
+        <img src={reply} style={{marginRight:'1vw',marginLeft:'1vw'}}/>Reply</button>
+
+        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'3vw',marginTop:'2vw',marginLeft:'1vw',borderRadius:'1.5vw',paddingRight:'1vw'}}>
+        <img src={forward} style={{marginRight:'1vw',marginLeft:'1vw'}}/>Forward</button>
+
+        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'3vw',marginLeft:'1vw',borderRadius:'2vw'}}>
+        <img src={smile} style={{marginRight:'0.7vw',marginLeft:'0.7vw'}}/></button>
+      
+      </div>
+      
           </div>
   );
 }

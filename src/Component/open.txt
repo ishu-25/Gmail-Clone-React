@@ -63,3 +63,74 @@ const subject = async(data)=>{
       console.error(err);
     }
   };
+
+
+
+
+   const docSnap = await getDoc(messageDoc);
+      if (docSnap.exists()) {
+        const mailData = { id: docSnap.id, ...docSnap.data()};
+        if (selectedMail && selectedMail.id === mailData.id) {
+          return mailData;
+      } else {
+          setSelectedMail(mailData);
+      }
+      } else {
+        console.log("No Data Available !!!!");
+      }
+
+
+
+
+
+
+
+
+
+
+const mailOpen = async () => {
+    const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
+    const inboxDoc = doc(userDoc, "Inbox", `${id}`);
+    const starredDoc = doc(userDoc, "Starred", `${id}`);
+    const snoozedDoc = doc(userDoc, "Snoozed", `${id}`);
+    const sendDoc = doc(userDoc, "send", `${id}`);
+    const trashDoc = doc(userDoc, "Trash", `${id}`);
+    
+    try {
+        let docSnap;
+        let mailData;
+
+        const getMailData = async (doc) => {
+            docSnap = await getDoc(doc);
+            if (docSnap.exists()) {
+                mailData = { id: docSnap.id, ...docSnap.data() };
+                return true;
+            }
+            return false;
+        };
+
+        switch (true) {
+            case await getMailData(inboxDoc):
+                break;
+            case await getMailData(starredDoc):
+                break;
+            case await getMailData(snoozedDoc):
+                break;
+            case await getMailData(sendDoc):
+                break;
+            case await getMailData(trashDoc):
+                break;
+            default:
+                break;
+        }
+
+        if (mailData) {
+            setMailData(mailData);
+            console.log("Mail data:", mailData);
+        } else {
+            console.log("No data available for this ID.");
+        }
+    } catch (err) {
+        console.error(err);
+    }
+};

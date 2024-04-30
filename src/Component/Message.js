@@ -36,13 +36,15 @@ export default function Message(props) {
 
         const userDoc = doc(database, 'Users', `${auth.currentUser?.email}`)
         const messageRef = collection(userDoc, 'send')
-
+        
         try {
             await addDoc(messageRef, {
                 email: message,
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
                 subject:subject,
+                senderEmailId: auth.currentUser?.email,
+                senderPhoto:auth.currentUser?.photoURL,
             })
         } catch (err) {
             console.error(err)
@@ -60,9 +62,12 @@ export default function Message(props) {
                 sender: auth.currentUser?.displayName,
                 createdAt:serverTimestamp(),
                 subject:subject,
+                senderEmailId: auth.currentUser?.email,
+                senderPhoto:auth.currentUser?.photoURL,
             });
             console.log(messageRef)
             send()
+            handleClose()
         } catch (err) {
             console.error(err)
         }
