@@ -1,5 +1,5 @@
 import { ListItem, Paper } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,createContext} from "react";
 import star from "../images/star.png";
 import refresh from "../images/refresh.png";
 import {
@@ -8,9 +8,9 @@ import {
   getDocs,
   deleteDoc,
   setDoc,
+  orderBy,
 } from "firebase/firestore";
 import { auth, database } from "../firebase/setup";
-import { Link } from "react-router-dom";
 import remove from "../images/bin.png";
 import yellow from "../images/yellow.png";
 import snooze from "../images/snooze.png";
@@ -24,11 +24,12 @@ import key from "../images/keyboard.png";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
+export const LeftpanelInfo = createContext()
 
-
-function Middle(props) {
+export const Middle = (props) => {
   const [mailData, setMailData] = useState([]);
   const navigate = useNavigate();
+  const [hoveredEmailId, setHoveredEmailId] = useState(null);
 
   const deleteMail = async (data) => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
@@ -46,7 +47,7 @@ function Middle(props) {
         email: data.email,
         sender: data.sender,
         createdAt: data.createdAt,
-        snoozed: true,
+        deleted: true,
       });
     } catch (err) {
       console.error(err);
@@ -56,22 +57,21 @@ function Middle(props) {
 
   const getMail = async () => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
-    const messageDoc = collection(
-      userDoc,
-      `${props.subCollect ? props.subCollect : "Inbox"}`
-    );
+    const messageDoc = collection(userDoc,`${props.subCollect ? props.subCollect : "Inbox"}`);
     try {
       const data = await getDocs(messageDoc);
-      // const data = await messageDoc.orderBy('createdAt').get();
+      // const query = await (data.orderBy('createdAt'));
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setMailData(filteredData);
+      // console.log('userDoc',userDoc)
     } catch (err) {
       console.error(err);
     }
   };
+  
 
   const handleRefresh = () => {
     getMail();
@@ -138,9 +138,7 @@ function Middle(props) {
 
   useEffect(() => {
     getMail();
-  }, [props.subCollect]);
-
-  const [hoveredEmailId, setHoveredEmailId] = useState(null);
+  }, [props.subCollect]); 
 
   const searchHandler = (e) => {
     props.setSearch(e.target.value.toLowerCase());
@@ -160,12 +158,9 @@ function Middle(props) {
     }
   };
 
-  // const handleMailClick = (data) => {
-  //   navigate(`/main/${data.id}`);
-  //   props.handleOpenMail();
-  // };
 
   return (
+    <LeftpanelInfo.Provider value={{getMail:getMail}} >
     <div style={{ width: "74vw" }}>
       <div
         style={{
@@ -587,12 +582,9 @@ function Middle(props) {
         </h6>
       </div>
     </div>
-    
+    </LeftpanelInfo.Provider>
   );
 }
 
 export default Middle;
-
-
-
 

@@ -87,7 +87,7 @@ const subject = async(data)=>{
 
 
 
-
+//switch statement in open different collection of particular email
 const mailOpen = async () => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
     const inboxDoc = doc(userDoc, "Inbox", `${id}`);
@@ -134,3 +134,64 @@ const mailOpen = async () => {
         console.error(err);
     }
 };
+
+
+
+//if statement in open different collection of particular email
+const mailOpen = async ()=>{
+    const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
+    const inboxDoc = doc(userDoc, "Inbox", `${id}`);
+    const starredDoc = doc(userDoc, "Starred", `${id}`);
+    const snoozedDoc = doc(userDoc, "Snoozed", `${id}`);
+    const sendDoc = doc(userDoc, "send", `${id}`);
+    const trashDoc = doc(userDoc, "Trash", `${id}`);
+   try {
+
+      let docSnap
+      let mailData
+      
+      docSnap = await getDoc(inboxDoc);
+      
+    if (docSnap.exists()) {
+      mailData = { id: docSnap.id, ...docSnap.data() };
+    }
+
+    if(!mailData){
+      docSnap = await getDoc(starredDoc);
+      if (docSnap.exists()) {
+        mailData = { id: docSnap.id, ...docSnap.data() };
+      }
+    }
+
+    if(!mailData){
+      docSnap = await getDoc(snoozedDoc);
+      if (docSnap.exists()) {
+        mailData = { id: docSnap.id, ...docSnap.data() };
+      }
+    }
+
+    if(!mailData){
+      docSnap = await getDoc(sendDoc);
+      if (docSnap.exists()) {
+        mailData = { id: docSnap.id, ...docSnap.data() };
+      }
+    }
+
+    if(!mailData){
+      docSnap = await getDoc(trashDoc);
+      if (docSnap.exists()) {
+        mailData = { id: docSnap.id, ...docSnap.data() };
+      }
+    }
+
+    if(mailData){
+      setMailData(mailData)
+      console.log("Mail data:", mailData);
+    } else {
+      console.log("No data available for this ID.");
+    }
+    }catch(err){
+      console.error(err)
+    }
+  }
+  

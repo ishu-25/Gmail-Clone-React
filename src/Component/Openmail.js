@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import lens from "../images/lens.png";
 import back from "../images/back.png";
 import archive from "../images/archive.png";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { LeftpanelInfo } from './Middle';
 import {
   doc,
-  setDoc,
   getDoc,
-  startAfter,
 } from "firebase/firestore";
 import { Avatar } from '@mui/material';
 import { auth, database } from "../firebase/setup";
@@ -33,79 +31,30 @@ import smile from "../images/smile.png";
 
 
 function Openmail(props) {
+
+  // const {getMail} = useContext(LeftpanelInfo)
   const { id } = useParams();
   const navigate = useNavigate();
   const [mailData, setMailData] = useState(null);
-
-
+  // const [getMailCalled, setGetMailCalled] = useState(false);
+  
 
   const searchHandler = (e) => {
     props.setSearch(e.target.value.toLowerCase());
   };
 
-
-
-  const mailOpen = async ()=>{
+  const mailOpen = async () => {
     const userDoc = doc(database, "Users", `${auth.currentUser?.email}`);
     const inboxDoc = doc(userDoc, "Inbox", `${id}`);
     const starredDoc = doc(userDoc, "Starred", `${id}`);
     const snoozedDoc = doc(userDoc, "Snoozed", `${id}`);
     const sendDoc = doc(userDoc, "send", `${id}`);
     const trashDoc = doc(userDoc, "Trash", `${id}`);
-  //   try {
-
-  //     let docSnap
-  //     let mailData
-      
-  //     docSnap = await getDoc(inboxDoc);
-      
-  //   if (docSnap.exists()) {
-  //     mailData = { id: docSnap.id, ...docSnap.data() };
-  //   }
-
-  //   if(!mailData){
-  //     docSnap = await getDoc(starredDoc);
-  //     if (docSnap.exists()) {
-  //       mailData = { id: docSnap.id, ...docSnap.data() };
-  //     }
-  //   }
-
-  //   if(!mailData){
-  //     docSnap = await getDoc(snoozedDoc);
-  //     if (docSnap.exists()) {
-  //       mailData = { id: docSnap.id, ...docSnap.data() };
-  //     }
-  //   }
-
-  //   if(!mailData){
-  //     docSnap = await getDoc(sendDoc);
-  //     if (docSnap.exists()) {
-  //       mailData = { id: docSnap.id, ...docSnap.data() };
-  //     }
-  //   }
-
-  //   if(!mailData){
-  //     docSnap = await getDoc(trashDoc);
-  //     if (docSnap.exists()) {
-  //       mailData = { id: docSnap.id, ...docSnap.data() };
-  //     }
-  //   }
-
-  //   if(mailData){
-  //     setMailData(mailData)
-  //     console.log("Mail data:", mailData);
-  //   } else {
-  //     console.log("No data available for this ID.");
-  //   }
-  //   }catch(err){
-  //     console.error(err)
-  //   }
-  // }
   
   try {
     let docSnap;
     let mailData;
-
+    
     const getMailData = async (doc) => {
         docSnap = await getDoc(doc);
         if (docSnap.exists()) {
@@ -125,25 +74,30 @@ function Openmail(props) {
         case await getMailData(sendDoc):
             break;
         case await getMailData(trashDoc):
-            break;
+            break;    
         default:
             break;
     }
 
     if (mailData) {
         setMailData(mailData);
-        // console.log("Mail data:", mailData);
-    } else {
-        console.log("No data available for this ID.");
-    }
+    } 
 } catch (err) {
     console.error(err);
 }
 };
 
+
 useEffect(() => {
   mailOpen()
+  // setGetMailCalled(true); 
 }, [])
+
+// useEffect(() => {
+//   if (getMailCalled) { 
+//     navigate("/main");
+//   }
+// }, [getMailCalled]);
 
 
   return (
@@ -153,7 +107,7 @@ useEffect(() => {
         
         <div
           style={{marginTop: "0.7vw",marginLeft: "0.5vw",display: "flex",alignItems: "center",borderRadius: "40px",backgroundColor: "#E4EFFA",width: "55vw",height: "3.7vw"}}>
-            
+         
           <img
             src={lens}
             style={{width: "1.3vw",height: "1.3vw",alignItems: "center",marginLeft: "15px",}}/>
@@ -251,7 +205,7 @@ useEffect(() => {
             </div>
             
             <div style={{marginLeft: props.isOpen ? "1vw" : "1vw",marginTop:'1vw',width:'10vw'}}>
-            <img src={printer} style={{ cursor:'pointer', width: "1.5vw",height: "1.3vw"}}/>
+            <img src={printer} style={{ cursor:'pointer', width: "1.3vw",height: "1.3vw"}}/>
             <img src={launch}  style={{cursor:'pointer', width: "2.3vw", height: "1.3vw",marginLeft: "1vw",paddingRight:'1vw'}}/>
             </div>
             
@@ -297,9 +251,7 @@ useEffect(() => {
         <img src={smile} style={{marginRight:'0.7vw',marginLeft:'0.7vw'}}/></button>
       
       </div>
-      
-          </div>
+    </div>
   );
 }
 export default Openmail;
-

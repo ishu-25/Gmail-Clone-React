@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import Leftpanel from './Leftpanel'
-import Middle from './Middle'
 import Rightpanel from './Rightpanel'
 import Footer from './Footer'
-import Openmail from './Openmail'
 
 function Mainfile(props) {
-
- 
-
   return (
     <div>
 
