@@ -8,12 +8,14 @@ import Snoozed from './Snoozed'
 import Send from './Send'
 import Trash from './Trash';
 import { sideContext } from '../App'
+import { TbRuler2Off } from 'react-icons/tb'
 
 
 function Leftpanel(props) {
     const {setGetMailCalled} = useContext(sideContext)
     const [activeIndex, setActiveIndex] = useState(0);
     const [hovered, setHovered] = useState(null);
+    const [menuhover, setMenuHover] = useState(false);
 
     const handleItemClick = (index, collect) => {
         setActiveIndex(index);
@@ -41,9 +43,11 @@ function Leftpanel(props) {
                     <div style={{ paddingBottom: '1vw', paddingTop: '1vw',  display: "flex", alignItems: "center",flexDirection:'row'}}>
                         
                     <button 
-                        onClick={props.toggleSideBar} 
-                        style={{cursor:'pointer',position:'fixed',backgroundColor:hovered == menu?'#D3D3D3' : '#F9F9F9',border:'none',minHeight:'3vw',marginRight:'1vw',borderRadius:'3vw'}}>
-                        <img src={menu} style={{ width: "2vw", marginLeft: "2vw" }}/>
+                        onClick={props.toggleSideBar}
+                        onMouseEnter={() => setMenuHover(true)}
+                        onMouseLeave={() => setMenuHover(false)}
+                        style={{minWidth:'3vw',cursor:'pointer',position:'fixed',backgroundColor: menuhover ?'#D3D3D3' : '#F9F9F9',border:'none',minHeight:'3vw',marginRight:'1vw',borderRadius:'3vw',marginLeft: "1vw" }}>
+                        <img src={menu} style={{ width: "2vw"}}/>
                     </button>
                         
                         <img style={{cursor:'pointer',marginLeft:'5vw' ,width: "2.3vw" }} src={gmail} />
