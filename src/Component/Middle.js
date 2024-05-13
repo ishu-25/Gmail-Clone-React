@@ -24,7 +24,7 @@ import key from "../images/keyboard.png";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
-// export const LeftpanelInfo = createContext()
+
 
 export const Middle = (props) => {
   const [mailData, setMailData] = useState([]);
@@ -160,7 +160,7 @@ export const Middle = (props) => {
 
 
   return (
-    // <LeftpanelInfo.Provider value={{getMail:getMail}} >
+    
     <div style={{ width: "74vw" }}>
       <div
         style={{
@@ -584,7 +584,6 @@ export const Middle = (props) => {
         </h6>
       </div>
     </div>
-    // </LeftpanelInfo.Provider>
   );
 }
 
