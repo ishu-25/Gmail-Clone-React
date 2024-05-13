@@ -322,6 +322,7 @@ export const Middle = (props) => {
                       key={data.id}
                       elevation={0}
                       style={{
+                        cursor:'pointer',
                         backgroundColor:
                           hoveredEmailId === data.id ? "#ECECEC" : "#F8FCFF",
                         borderTop: "1px solid #EFEFEF",
@@ -452,6 +453,7 @@ export const Middle = (props) => {
                     key={data.id}
                     elevation={0}
                     style={{
+                      cursor:'pointer',
                       backgroundColor:
                         hoveredEmailId === data.id ? "#ECECEC" : "#F8FCFF",
                       borderTop: "1px solid #EFEFEF",

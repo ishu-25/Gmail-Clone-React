@@ -40,14 +40,15 @@ function Leftpanel(props) {
                 
                     <div style={{ paddingBottom: '1vw', paddingTop: '1vw',  display: "flex", alignItems: "center",flexDirection:'row'}}>
                         
-                        <button onClick={props.toggleSideBar}
-                            style={{cursor:'pointer',position:'fixed',backgroundColor:'#F9F9F9', border:'none',marginRight:'1vw'}}>
-                            <img src={menu} style={{ width: "2vw", marginLeft: "2vw" }} />
-                        </button>
+                    <button 
+                        onClick={props.toggleSideBar} 
+                        style={{cursor:'pointer',position:'fixed',backgroundColor:hovered == menu?'#D3D3D3' : '#F9F9F9',border:'none',minHeight:'3vw',marginRight:'1vw',borderRadius:'3vw'}}>
+                        <img src={menu} style={{ width: "2vw", marginLeft: "2vw" }}/>
+                    </button>
                         
-                        <img style={{marginLeft:'5vw' ,width: "2.3vw" }} src={gmail} />
+                        <img style={{cursor:'pointer',marginLeft:'5vw' ,width: "2.3vw" }} src={gmail} />
                         
-                        <h6 style={{fontWeight:'400', color: "#3C3C3C", marginLeft: "1vw", fontSize: "1.8vw",fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }} >
+                        <h6 style={{cursor:'pointer',fontWeight:'400', color: "#3C3C3C", marginLeft: "1vw", fontSize: "1.8vw",fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif" }} >
                             Gmail
                         </h6>
                         
