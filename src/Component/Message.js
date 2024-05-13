@@ -14,7 +14,7 @@ const style = {
     left: '71%',
     transform: 'translate(-50%, -50%)',
     width: "37vw",
-    height: "20vw",
+    height: "21vw",
     minHeight: "472px",
     bgcolor: 'background.paper',
     padding: "1vw",
