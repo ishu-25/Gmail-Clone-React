@@ -99,7 +99,7 @@ export default function Message(props) {
                     
                     <TextField onChange={(e) => setMessage(e.target.value)} multiline rows={12} sx={{ width: "36vw", "& fieldset": { border: "none" } }} /><br />
                     
-                    <Button onClick={inbox} variant='contained' sx={{ borderRadius: "6vw", fontSize: '1vw', width: "4vw", height: "2.3vw",marginBottom:'1vw' }}>Send</Button>
+                    <Button onClick={inbox} variant='contained' sx={{ borderRadius: "6vw", fontSize: '1vw', width: "4vw", height: "2.3vw",marginBottom:'2vw' }}>Send</Button>
                 </Box>
             </Modal>
         </div>
