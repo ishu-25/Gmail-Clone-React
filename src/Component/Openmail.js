@@ -28,15 +28,16 @@ import key from "../images/keyboard.png";
 import reply from "../images/reply.png";
 import forward from "../images/Forward.png";
 import smile from "../images/smile.png";
+import { sideContext } from "../App";
 
 
 function Openmail(props) {
 
-  // const {getMail} = useContext(LeftpanelInfo)
+  const {getMailCalled} = useContext(sideContext)
   const { id } = useParams();
   const navigate = useNavigate();
   const [mailData, setMailData] = useState(null);
-  // const [getMailCalled, setGetMailCalled] = useState(false);
+  
   
 
   const searchHandler = (e) => {
@@ -90,14 +91,13 @@ function Openmail(props) {
 
 useEffect(() => {
   mailOpen()
-  // setGetMailCalled(true); 
 }, [])
 
-// useEffect(() => {
-//   if (getMailCalled) { 
-//     navigate("/main");
-//   }
-// }, [getMailCalled]);
+useEffect(() => {
+  if (getMailCalled) { 
+    navigate("/main");
+  }
+}, [getMailCalled]);
 
 
   return (

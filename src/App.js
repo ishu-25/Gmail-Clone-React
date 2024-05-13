@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { useState } from 'react'
+import React, { useState,createContext } from 'react'
 import Login from './Component/Login';
 import Mainfile from './Component/Mainfile';
 import Middle from './Component/Middle';
@@ -9,6 +9,7 @@ import Signin from './Component/Signin';
 import { Routes,Route,useLocation } from 'react-router-dom';
 import { Inbox } from '@mui/icons-material';
 
+export const sideContext = createContext()
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
 
   const [isOpen, setIsOpen] = useState(true)
   const toggleSideBar = () => setIsOpen(!isOpen)
-  
+  const [getMailCalled, setGetMailCalled] = useState(false);
 
    
    const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
    const isLoginPage = location.pathname === '/'|| location.pathname === '/signin';
 
   return (
+    <sideContext.Provider value={{getMailCalled:getMailCalled,setGetMailCalled:setGetMailCalled}}>
     <div className="App">
     
 
@@ -50,6 +52,7 @@ function App() {
     </div>
     
     </div>
+    </sideContext.Provider>
   );
 }
 

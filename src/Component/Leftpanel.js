@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState,useContext} from 'react'
 import Message from './Message'
 import gmail from "../images/gmail.png"
 import menu from "../images/menu.png"
@@ -7,16 +7,18 @@ import Starred from './Starred'
 import Snoozed from './Snoozed'
 import Send from './Send'
 import Trash from './Trash';
+import { sideContext } from '../App'
 
 
 function Leftpanel(props) {
-
+    const {setGetMailCalled} = useContext(sideContext)
     const [activeIndex, setActiveIndex] = useState(0);
     const [hovered, setHovered] = useState(null);
 
     const handleItemClick = (index, collect) => {
         setActiveIndex(index);
         props.setSubCollect(collect);
+        setGetMailCalled(true)
     };
 
     const handleMouseEnter = (index) => setHovered(index);
