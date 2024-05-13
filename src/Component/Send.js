@@ -25,7 +25,7 @@ function Send(props) {
                       marginLeft: props.isOpen ? 0 : '1.5vw' 
                       }}>
 
-                <img src={send} style={{ width: '1.2vw',marginLeft:props.isOpen ? '1.5vw' : 0  }} />
+                <img src={send} style={{ width: '1.1vw',marginLeft:props.isOpen ? '1.5vw' : 0  }} />
 
                 {props.isOpen && (
                 <span style={{ 
