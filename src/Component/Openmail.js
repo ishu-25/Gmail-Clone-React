@@ -33,7 +33,7 @@ import { sideContext } from "../App";
 
 function Openmail(props) {
 
-  const {getMailCalled} = useContext(sideContext)
+  const {getMailCalled,setGetMailCalled} = useContext(sideContext)
   const { id } = useParams();
   const navigate = useNavigate();
   const [mailData, setMailData] = useState(null);
@@ -96,8 +96,9 @@ useEffect(() => {
 useEffect(() => {
   if (getMailCalled) { 
     navigate("/main");
+    setGetMailCalled(false)
   }
-}, [getMailCalled]);
+}, [getMailCalled,setGetMailCalled]);
 
 
   return (
