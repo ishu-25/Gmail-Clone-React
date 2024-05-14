@@ -78,7 +78,7 @@ export default function Message(props) {
 
         <div>
 
-            <div onClick={handleOpen} style={{width:props.isOpen ?'10.7vw': '4vw',cursor: 'pointer', height: '4vw', marginLeft: '1vw', display: 'flex', alignItems: 'center', borderRadius: props.isOpen ? '1.5vw' : '1vw', backgroundColor: '#BEE0FF' }}>
+            <div onClick={handleOpen} style={{width:props.isOpen ?'10.7vw': '4vw',cursor: 'pointer', height: '4vw', marginLeft: '0.5vw', display: 'flex', alignItems: 'center', borderRadius: props.isOpen ? '1vw' : '1vw', backgroundColor: '#BEE0FF' }}>
                 <img src={pen} style={{ width: '1.2vw', marginLeft: '1.5vw' }} />
                 {props.isOpen && (<span style={{ marginLeft: '1.2vw', fontWeight: '400', fontSize: '1.2vw', fontFamily: "'Google Sans', Roboto, RobotoDraft, Helvetica, Arial, sans-serif"}}>Compose</span>)}
             </div>

@@ -11,7 +11,6 @@ function Trash(props) {
                 onMouseEnter={() => props.handleMouseEnter(4)}
                 onMouseLeave={props.handleMouseLeave}
                 style={{
-                      marginTop: '0.5vw',
                       width:props.isOpen ? '17vw' : '2.3vw',
                       position:'relative',
                       cursor:'pointer',

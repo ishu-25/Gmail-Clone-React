@@ -242,14 +242,14 @@ useEffect(() => {
       
       <div style={{marginLeft: props.isOpen ? "4.5vw" : "-9vw"}}>
 
-        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'3vw',marginTop:'2vw',borderRadius:'1.5vw',paddingRight:'1vw'}}>
+        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'2.5vw',marginTop:'2vw',borderRadius:'1.5vw',paddingRight:'1vw'}}>
         <img src={reply} style={{marginRight:'1vw',marginLeft:'1vw'}}/>Reply</button>
 
-        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'3vw',marginTop:'2vw',marginLeft:'1vw',borderRadius:'1.5vw',paddingRight:'1vw'}}>
+        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'2.5vw',marginTop:'2vw',marginLeft:'1vw',borderRadius:'1.5vw',paddingRight:'1vw'}}>
         <img src={forward} style={{marginRight:'1vw',marginLeft:'1vw'}}/>Forward</button>
 
-        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'3vw',marginLeft:'1vw',borderRadius:'2vw'}}>
-        <img src={smile} style={{marginRight:'0.7vw',marginLeft:'0.7vw'}}/></button>
+        <button style={{border:'1px solid gray',backgroundColor:'white',minHeight:'2.5vw',marginLeft:'1vw',borderRadius:'2vw'}}>
+        <img src={smile} style={{marginRight:'0.7vw',marginLeft:'0.7vw',width:'1.2vw'}}/></button>
       
       </div>
     </div>
